@@ -1,0 +1,206 @@
+/* =====================================================================
+   FOGO ZERO — CSS RESPONSIVO
+   Breakpoints prioritários: 1920 / 1440 / 1366 / 1024 / 768 / 480 / 390
+===================================================================== */
+
+
+/* ---------------------------------------------------------------------
+   TELAS GRANDES (>= 1600px) — respiro extra em telas muito largas
+--------------------------------------------------------------------- */
+
+@media (min-width: 1600px) {
+    .container { max-width: 1320px; }
+    .hero-content { max-width: 780px; }
+}
+
+
+/* ---------------------------------------------------------------------
+   NOTEBOOK / DESKTOP MENOR (<= 1366px)
+--------------------------------------------------------------------- */
+
+@media (max-width: 1366px) {
+    .container { max-width: 1120px; }
+    .feature-grid { gap: 1.25rem; }
+}
+
+
+/* ---------------------------------------------------------------------
+   TABLET GRANDE (<= 1024px)
+--------------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+
+    .navigation { gap: 1rem; }
+    .nav-link { font-size: 0.86rem; }
+
+    .feature-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .impact-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .split-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .split-layout.reverse .split-image,
+    .split-layout.reverse .split-content { order: initial; }
+
+    .project-highlights { flex-wrap: wrap; row-gap: 1.4rem; }
+
+    .footer-grid { grid-template-columns: 1.2fr 1fr 1fr; }
+    .footer-column:last-child { grid-column: span 2; }
+}
+
+
+/* ---------------------------------------------------------------------
+   TABLET / MENU MOBILE (<= 900px)
+--------------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+    .menu-toggle {
+        display: inline-flex;
+        z-index: 110;
+    }
+
+    .navigation {
+        position: fixed;
+        inset: 0 0 0 auto;
+        top: 0;
+        height: 100vh;
+        width: min(80vw, 340px);
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 1.6rem;
+        padding: 2rem 2.4rem;
+        background: var(--verde-profundo);
+        transform: translateX(100%);
+        transition: transform var(--dur-media) var(--ease);
+        box-shadow: -20px 0 60px rgba(0, 0, 0, 0.25);
+    }
+
+    .navigation.is-open { transform: translateX(0); }
+
+    .navigation .nav-link,
+    .header:not(.is-scrolled) .navigation .nav-link {
+        color: rgba(255, 255, 255, 0.88);
+        font-size: 1.05rem;
+    }
+
+    .navigation .nav-link.active,
+    .navigation .nav-link:hover { color: var(--ambar); }
+
+    .nav-instagram {
+        margin-top: 0.5rem;
+        color: var(--branco) !important;
+        border-color: rgba(255, 255, 255, 0.4) !important;
+    }
+
+    /* Ícone hamburguer -> X quando aberto */
+    .menu-toggle.is-active span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+    .menu-toggle.is-active span:nth-child(2) { opacity: 0; }
+    .menu-toggle.is-active span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    body.nav-open { overflow: hidden; }
+}
+
+
+/* ---------------------------------------------------------------------
+   TABLET / MOBILE GRANDE (<= 768px)
+--------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+    :root { --section-y: clamp(3.5rem, 12vw, 5rem); }
+
+    .hero { min-height: 92vh; }
+    .hero-container { padding-block: calc(var(--section-y) + 2.4rem) 2rem; }
+    .hero-buttons { flex-direction: column; align-items: stretch; }
+    .hero-buttons .btn { justify-content: center; }
+
+    .feature-grid { grid-template-columns: 1fr; }
+
+    .impact-grid { grid-template-columns: 1fr; }
+
+    .process {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+    }
+
+    .process-line {
+        width: 1.5px;
+        height: 34px;
+        margin: 0 0 0 27px;
+    }
+
+    .process-item { flex-direction: row; align-items: flex-start; gap: 1.2rem; }
+    .process-item p { max-width: none; }
+
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .footer-brand { grid-column: span 2; margin-bottom: 0.5rem; }
+    .footer-column:last-child { grid-column: span 1; }
+
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+}
+
+
+/* ---------------------------------------------------------------------
+   SMARTPHONE (<= 480px)
+--------------------------------------------------------------------- */
+
+@media (max-width: 480px) {
+
+    :root { --gutter: 1.25rem; }
+
+    .hero-tag { font-size: 0.7rem; padding: 0.5rem 0.85rem; }
+
+    .hero-description { font-size: 1rem; }
+
+    .split-image { aspect-ratio: 4 / 3.6; }
+
+    .project-highlights {
+        gap: 1.4rem 2rem;
+    }
+
+    .project-highlights strong { font-size: 1.6rem; }
+
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-brand { grid-column: span 1; }
+    .footer-column:last-child { grid-column: span 1; }
+
+    .expo-content h2 { font-size: clamp(2.2rem, 12vw, 2.8rem); }
+}
+
+
+/* ---------------------------------------------------------------------
+   SMARTPHONE PEQUENO (<= 390px)
+--------------------------------------------------------------------- */
+
+@media (max-width: 390px) {
+
+    .btn {
+        padding: 0.85rem 1.4rem;
+        font-size: 0.9rem;
+    }
+
+    .logo-text strong { font-size: 0.95rem; }
+
+    .section-label { font-size: 0.7rem; }
+
+    .navigation { width: 86vw; padding-inline: 1.8rem; }
+}
+
+
+/* ---------------------------------------------------------------------
+   PARALLAX / EFEITOS — desativados em telas de toque e reduced motion
+--------------------------------------------------------------------- */
+
+@media (hover: none) {
+    .feature-card:hover,
+    .impact-card:hover,
+    .split-image:hover img { transform: none; }
+}
