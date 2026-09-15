@@ -644,6 +644,8 @@ h2 span {
     gap: 1.5rem;
 }
 
+.feature-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+
 .feature-card {
     position: relative;
     background: var(--branco);
@@ -1129,7 +1131,269 @@ h2 span {
 
 
 /* ---------------------------------------------------------------------
-   15. ACESSIBILIDADE — SKIP-LINK (injetado via JS, estilo aqui)
+   15. PAGE HERO — cabeçalho reduzido para páginas internas
+   (O Cerrado, O Fogo, Prevenção, Nossa Solução, O Projeto, Equipe...)
+--------------------------------------------------------------------- */
+
+.page-hero {
+    position: relative;
+    color: var(--branco);
+    background: var(--verde-profundo);
+    overflow: hidden;
+    padding-block: calc(var(--section-y) + 3.4rem) clamp(3rem, 6vw, 4.5rem);
+}
+
+.page-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.3;
+    mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'%3E%3Cg fill='none' stroke='%23F2B872' stroke-width='1'%3E%3Cpath d='M-20 420 C 150 380, 250 460, 420 400 S 650 300, 860 340'/%3E%3Cpath d='M-20 460 C 180 420, 300 490, 460 440 S 680 350, 860 390'/%3E%3Cpath d='M-20 380 C 140 340, 260 410, 400 360 S 630 260, 860 300'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: cover;
+    background-position: center;
+}
+
+.page-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(85% 90% at 85% 0%, rgba(217, 127, 43, 0.18), transparent 55%);
+}
+
+.page-hero-container {
+    position: relative;
+    z-index: 1;
+}
+
+.page-hero-crumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 1.6rem;
+}
+
+.page-hero-crumb a { color: rgba(255, 255, 255, 0.78); transition: color var(--dur-rapida) var(--ease); }
+.page-hero-crumb a:hover { color: var(--ambar-claro); }
+
+.page-hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6em;
+    font-family: var(--fonte-display);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--ambar-claro);
+    margin-bottom: 1.1rem;
+}
+
+.page-hero-label::before {
+    content: '';
+    width: 22px;
+    height: 1.5px;
+    background: var(--ambar);
+    display: inline-block;
+}
+
+.page-hero h1 {
+    color: var(--branco);
+    max-width: 15ch;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    letter-spacing: -0.02em;
+}
+
+.page-hero p {
+    margin-top: 1.4rem;
+    max-width: 56ch;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+
+/* ---------------------------------------------------------------------
+   16. BLOCOS DE DADOS / ESTATÍSTICAS (reaproveita em várias páginas)
+--------------------------------------------------------------------- */
+
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+}
+
+.stat-card {
+    background: var(--branco);
+    border: 1px solid var(--linha);
+    border-radius: var(--raio-md);
+    padding: 1.8rem 1.6rem;
+}
+
+.stat-card strong {
+    display: block;
+    font-family: var(--fonte-display);
+    font-size: clamp(1.9rem, 3vw, 2.6rem);
+    font-weight: 700;
+    color: var(--verde-mata);
+    line-height: 1;
+    margin-bottom: 0.6rem;
+}
+
+.stat-card span {
+    font-size: 0.92rem;
+    color: var(--grafite-suave);
+}
+
+.stat-note {
+    margin-top: 1.5rem;
+    font-size: 0.82rem;
+    color: var(--grafite-suave);
+}
+
+
+/* ---------------------------------------------------------------------
+   17. EQUIPE — cartões de integrantes
+--------------------------------------------------------------------- */
+
+.team-nucleo-section {
+    padding-block: clamp(2.4rem, 5vw, 3.4rem);
+}
+
+.team-nucleo-section:nth-of-type(even) {
+    background: var(--verde-bruma);
+}
+
+.team-nucleo-section .section-header {
+    margin-bottom: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.team-card {
+    background: var(--branco);
+    border: 1px solid var(--linha);
+    border-radius: var(--raio-md);
+    padding: 1.8rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    transition: transform var(--dur-media) var(--ease),
+                box-shadow var(--dur-media) var(--ease),
+                border-color var(--dur-media) var(--ease);
+}
+
+.team-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-md);
+    border-color: var(--ambar-claro);
+}
+
+.team-avatar {
+    width: 56px;
+    height: 56px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--verde-bruma);
+    color: var(--verde-mata);
+    font-family: var(--fonte-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.team-card h3 {
+    font-size: 1.05rem;
+    color: var(--verde-profundo);
+}
+
+.team-role {
+    display: inline-block;
+    margin-top: -0.5rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ambar-escuro);
+}
+
+.team-card p {
+    font-size: 0.9rem;
+    color: var(--grafite-suave);
+}
+
+.team-nucleo {
+    align-self: flex-start;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--verde-mata);
+    background: var(--verde-bruma);
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+}
+
+
+/* ---------------------------------------------------------------------
+   18. LISTA DE REFERÊNCIAS (página Fontes)
+--------------------------------------------------------------------- */
+
+.reference-list {
+    max-width: 760px;
+}
+
+.reference-group {
+    padding-block: 1.8rem;
+    border-bottom: 1px solid var(--linha);
+}
+
+.reference-group:first-child { padding-top: 0; }
+
+.reference-group h3 {
+    font-size: 1.05rem;
+    color: var(--verde-profundo);
+    margin-bottom: 0.9rem;
+}
+
+.reference-group ol {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    counter-reset: ref;
+}
+
+.reference-group li {
+    counter-increment: ref;
+    display: flex;
+    gap: 0.8rem;
+    font-size: 0.95rem;
+    color: var(--grafite-suave);
+    line-height: 1.55;
+}
+
+.reference-group li::before {
+    content: counter(ref);
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--verde-bruma);
+    color: var(--verde-mata);
+    font-family: var(--fonte-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    margin-top: 0.1rem;
+}
+
+
+/* ---------------------------------------------------------------------
+   19. ACESSIBILIDADE — SKIP-LINK (injetado via JS, estilo aqui)
 --------------------------------------------------------------------- */
 
 .skip-link {

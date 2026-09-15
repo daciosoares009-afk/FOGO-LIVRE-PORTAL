@@ -37,6 +37,10 @@
 
     .impact-grid { grid-template-columns: repeat(2, 1fr); }
 
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+
     .split-layout {
         grid-template-columns: 1fr;
     }
@@ -125,6 +129,12 @@
     .feature-grid { grid-template-columns: 1fr; }
 
     .impact-grid { grid-template-columns: 1fr; }
+
+    .team-grid { grid-template-columns: 1fr; }
+
+    .stat-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .page-hero { padding-block: calc(var(--section-y) + 2.4rem) 2.5rem; }
 
     .process {
         grid-template-columns: 1fr;

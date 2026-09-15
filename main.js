@@ -113,7 +113,10 @@
             '.split-content',
             '.process-item',
             '.expo-content',
-            '.instagram-content'
+            '.instagram-content',
+            '.stat-card',
+            '.team-card',
+            '.reference-group'
         ];
 
         const elements = document.querySelectorAll(selectors.join(','));
@@ -129,6 +132,8 @@
         // criando um efeito de revelação em cascata discreto.
         applyStaggerDelay('.feature-grid', '.feature-card');
         applyStaggerDelay('.impact-grid', '.impact-card');
+        applyStaggerDelay('.stat-grid', '.stat-card');
+        applyStaggerDelay('.team-grid', '.team-card');
 
         const observer = new IntersectionObserver(
             (entries, obs) => {
